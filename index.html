@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>360 Panorama Viewer</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #fff; }
+    #container { position: fixed; inset: 0; }
+    #container canvas { display: block; cursor: grab; }
+    #container canvas.dragging { cursor: grabbing; }
+
+    .panel {
+      position: absolute; z-index: 10;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 8px 12px; border-radius: 6px;
+      font-size: 13px; backdrop-filter: blur(6px);
+    }
+    #ui { top: 12px; left: 12px; }
+    #ui input[type=file] { color: #fff; font-size: 12px; }
+    #hint { bottom: 12px; left: 12px; pointer-events: none; opacity: 0.85; }
+
+    #drop-overlay {
+      position: fixed; inset: 0; z-index: 20;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      border: 3px dashed rgba(255, 255, 255, 0.6);
+      font-size: 22px; pointer-events: none;
+    }
+    #drop-overlay.active { display: flex; }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+
+  <div id="ui" class="panel">
+    <label>Load panorama: <input type="file" id="file" accept="image/*"></label>
+  </div>
+
+  <div id="hint" class="panel">Drag to look · Scroll to zoom · Drop an image anywhere</div>
+
+  <div id="drop-overlay">Drop panorama image to view</div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
