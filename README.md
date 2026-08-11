@@ -28,3 +28,6 @@ Drag sensitivity scales with the current zoom level, so panning stays smooth whe
 
 - `index.html` — page shell, file picker, drop overlay, three.js import map
 - `app.js` — scene setup, controls, and panorama loading
+
+
+1
